@@ -20,7 +20,7 @@ const Product = () => {
   
 
   const buttonFunc = () => {
-    dispatch(createDataFunc(productInfo))
+    dispatch(createDataFunc({...productInfo,id:data.length + 1}))
     dispatch(modalFunc)
   };
 
@@ -28,7 +28,7 @@ const Product = () => {
     if (type === "url") {
       setProductInfo((prev) => ({
         ...prev,
-        [e.target.name]: URL.createObjectURL(e.target.file[0]),
+        [e.target.name]: URL.createObjectURL(e.target.files[0]),
       }));
     } else {
       setProductInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
